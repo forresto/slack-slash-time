@@ -22,7 +22,7 @@
 
 ## server setup
 
-Includes example setup for [iron.io](https://www.iron.io/) which doesn't require server setup. More info: [Super Easy Serverless Slack Bots](http://www.iron.io/blog/2015/03/super-easy-serverless-slack-bots.html).
+Includes example setup for [iron.io](https://www.iron.io/) which doesn't require server setup. More info: [Super Easy Serverless Slack Bots](http://www.iron.io/blog/2015/03/super-easy-serverless-slack-bots.html). slash-time-iron.js and slash-time.worker are specific to iron.io setup. You'll also need iron.json.
 
 ## time formats
 
