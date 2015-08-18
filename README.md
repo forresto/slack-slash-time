@@ -1,5 +1,7 @@
 # `/time` slash command for Slack
 
+![slash-time](https://cloud.githubusercontent.com/assets/395307/9330787/6bb176f2-4589-11e5-917a-889170ea9331.png)
+
 ## inputs
 
     params: (from slash command webhook)
@@ -20,7 +22,7 @@
 
 ## server setup
 
-Includes example setup for [iron.io](https://www.iron.io/).
+Includes example setup for [iron.io](https://www.iron.io/) which doesn't require server setup. More info: [Super Easy Serverless Slack Bots](http://www.iron.io/blog/2015/03/super-easy-serverless-slack-bots.html).
 
 ## time formats
 
