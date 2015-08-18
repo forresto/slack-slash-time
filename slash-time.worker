@@ -1,0 +1,11 @@
+runtime "node"
+
+stack "node-0.10"
+
+file "package.json"
+
+file "slash-time.js"
+
+build "npm install"
+
+exec "slash-time-iron.js"

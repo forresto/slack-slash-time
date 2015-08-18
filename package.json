@@ -1,0 +1,13 @@
+{
+  "name": "slack-slash-time",
+  "version": "0.0.1",
+  "description": "translate times in slack channels",
+  "main": "slash-time.js",
+  "author": "forresto",
+  "license": "MIT",
+  "dependencies": {
+    "chrono-node": "^1.0.6",
+    "iron_worker": "^0.1.6",
+    "request": "^2.60.0"
+  }
+}
