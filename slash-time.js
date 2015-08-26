@@ -32,9 +32,10 @@ module.exports = SlashTime = function(params, config, callback) {
   var sendToSlack = function(channel, content) {
     request.post(
       {
-        url: 'https://' + config.BOT_HOST + config.BOT_PATH + config.BOT_TOKEN +
-          '&channel=' + channel,
-        body: content
+        url: 'https://slack.com/api/chat.postMessage?' +
+          'token=' + config.API_TOKEN +
+          '&channel=' + channel +
+          '&text=' + content
       }, 
       function (err, response, body) {
         if (err) {
