@@ -28,13 +28,20 @@ module.exports = SlashTime = function(params, config, callback) {
   var everybody = null;
   var members = null;
 
+  config.BOT_NAME  = config.BOT_NAME  || 'clockbot';
+  config.BOT_EMOJI = config.BOT_EMOJI || ':hourglass:';
+  config.DAY_START = config.DAY_START || 9;
+  config.DAY_END   = config.DAY_END   || 22;
   
   var sendToSlack = function(channel, content) {
     request.post(
       {
-        url: 'https://' + config.BOT_HOST + config.BOT_PATH + config.BOT_TOKEN +
-          '&channel=' + channel,
-        body: content
+        url: 'https://slack.com/api/chat.postMessage?' +
+          'token=' + config.API_TOKEN +
+          '&channel=' + channel +
+          '&text=' + content +
+          '&username=' + config.BOT_NAME +
+          '&icon_emoji=' + config.BOT_EMOJI
       }, 
       function (err, response, body) {
         if (err) {
@@ -104,7 +111,7 @@ module.exports = SlashTime = function(params, config, callback) {
         // Not in channel
         continue;
       }
-      if (!person.tz || !person.tz_offset) {
+      if (!person.tz_offset) {
         continue;
       }
       if (person.id === params.user_id) {
@@ -135,10 +142,11 @@ module.exports = SlashTime = function(params, config, callback) {
     };
     var getSleep = function (date) {
       var hour = date.getHours();
-      if ( 9 <= hour && hour <= 22) {
+      if ( config.DAY_START <= hour && hour <= config.DAY_END) {
         return ':sun_with_face:';
+      } else {
+        return ':new_moon_with_face:';
       }
-      return ':new_moon_with_face:';
     };
     var getDate = function (date) {
       var string = ((date.getMonth()+1).toString().length === 1) ? '0' : '';
