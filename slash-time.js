@@ -28,8 +28,10 @@ module.exports = SlashTime = function(params, config, callback) {
   var everybody = null;
   var members = null;
 
-  config.BOT_NAME = config.BOT_NAME || 'clockbot';
+  config.BOT_NAME  = config.BOT_NAME  || 'clockbot';
   config.BOT_EMOJI = config.BOT_EMOJI || ':hourglass:';
+  config.DAY_START = config.DAY_START || 9;
+  config.DAY_END   = config.DAY_END   || 22;
   
   var sendToSlack = function(channel, content) {
     request.post(
@@ -140,7 +142,7 @@ module.exports = SlashTime = function(params, config, callback) {
     };
     var getSleep = function (date) {
       var hour = date.getHours();
-      if ( 7 <= hour && hour <= 22) {
+      if ( config.DAY_START <= hour && hour <= config.DAY_END) {
         return ':sun_with_face:';
       } else {
         return ':new_moon_with_face:';
