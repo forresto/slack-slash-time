@@ -10,7 +10,7 @@
       user_id:
       text: 
 
-    config: (private Slack API info)
+    config: (private Slack API info, best defined in process.env)
       SLASH_TOKEN:
       BOT_HOST:
       BOT_PATH:
@@ -22,7 +22,8 @@
 
 ## server setup
 
-Includes example setup for [iron.io](https://www.iron.io/) which doesn't require server setup. More info: [Super Easy Serverless Slack Bots](http://www.iron.io/blog/2015/03/super-easy-serverless-slack-bots.html). slash-time-iron.js and slash-time.worker are specific to iron.io setup. You'll also need iron.json.
+* Example setup on gomix: https://gomix.com/#!/project/seed-humor
+* Example setup for iron.io: [slash-time-iron.js](./slash-time-iron.js)
 
 ## time formats
 
