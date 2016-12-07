@@ -32,8 +32,7 @@ module.exports = SlashTime = function(params, config, callback) {
   var sendToSlack = function(channel, content) {
     request.post(
       {
-        url: 'https://' + config.BOT_HOST + config.BOT_PATH + config.BOT_TOKEN +
-          '&channel=' + channel,
+        url: params.response_url,
         body: content
       }, 
       function (err, response, body) {
@@ -73,8 +72,8 @@ module.exports = SlashTime = function(params, config, callback) {
     channel_id = config.GENERAL_ID;
   }
   var channelOptions = {
-    url: 'https://slack.com/api/channels.info?' +
-      'channel=' + channel_id + 
+    url: 'https://slack.com/api/channels.info' +
+      '?channel=' + channel_id + 
       '&token=' + config.API_TOKEN
   };
   function channelCallback(error, response, body) {
