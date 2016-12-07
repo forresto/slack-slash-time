@@ -182,8 +182,9 @@ module.exports = function(params, config, callback) {
     };
 
     if (userTimezoneOffset != null) {
-      var offTime = chrono.parseDate(params.text) || Date.now();
-      var utcTime = new Date( Date.parse(offTime) - userTimezoneOffset*1000 );
+      var offTime = chrono.parseDate(params.text)
+      offTime = offTime ? Date.parse(offTime) : Date.now()
+      var utcTime = new Date( offTime - userTimezoneOffset*1000 )
       var times = '';
       var lastIcon = '';
       var lastDate = '';
