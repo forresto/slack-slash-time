@@ -1,6 +1,6 @@
 {
   "name": "slack-slash-time",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "translate times in slack channels",
   "main": "slash-time.js",
   "author": "forresto",
