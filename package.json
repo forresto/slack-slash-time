@@ -6,8 +6,8 @@
   "author": "forresto",
   "license": "MIT",
   "dependencies": {
-    "chrono-node": "^1.0.6",
+    "chrono-node": "^1.2.5",
     "iron_worker": "^0.1.6",
-    "request": "^2.60.0"
+    "request": "^2.79.0"
   }
 }
