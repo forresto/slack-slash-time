@@ -20,20 +20,31 @@ function sortObjectToArray(obj) {
 }
 
 
-module.exports = SlashTime = function(params, config, callback) {
+module.exports = function(params, config, callback) {
+  var errorOut = function (message) {
+    callback('Error: ' + message)
+  }
+
   // Minimal webhook safety
-  if (params.token !== config.SLASH_TOKEN) { return; }
+  if (params.token !== config.SLASH_TOKEN) {
+    errorOut('Bad token')
+    return
+  }
 
   // Save from 2 API calls
   var everybody = null;
   var members = null;
 
   
-  var sendToSlack = function(channel, content) {
+  var sendToSlack = function (text) {
     request.post(
       {
         url: params.response_url,
-        body: content
+        json: true,
+        body: {
+          response_type: "in_channel",
+          text: text
+        }
       }, 
       function (err, response, body) {
         if (err) {
@@ -200,15 +211,11 @@ module.exports = SlashTime = function(params, config, callback) {
           // makeInitials(zone.people).join(', ') +
           ') ';
       }
-      sendToSlack(params.channel_id, times);
+      sendToSlack(times);
     } else {
       errorOut('You need to set timezone in Slack setup (slack.com/account/settings).');
     }
   };
-
-  var errorOut = function (message) {
-    callback(message);
-  }
 
   return;
 }
