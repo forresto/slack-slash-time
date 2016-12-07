@@ -51,7 +51,7 @@ module.exports = function(params, config, callback) {
           errorOut(err);
         }
         if (response && response.statusCode == 200) {
-          callback('Success: ' + content);
+          callback('Success: ' + text);
         }
       }
     );
