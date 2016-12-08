@@ -36,14 +36,16 @@ module.exports = function(params, config, callback) {
   var members = null;
 
   
-  var sendToSlack = function (text) {
+  var sendToSlack = function (text, ephemeral) {
+    var response_type = ephemeral ? "ephemeral" : "in_channel"
     request.post(
       {
         url: params.response_url,
         json: true,
         body: {
-          response_type: "in_channel",
-          text: text
+          response_type: response_type,
+          text: text,
+          attachments: [{text: "@" + params.user_name + " translated " + "`/time " + params.text + "`"}]
         }
       }, 
       function (err, response, body) {
